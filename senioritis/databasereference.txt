@@ -1,0 +1,19 @@
+Written for PostgreSQL 9.3
+
+
+create TABLE files (
+    id SERIAL,
+    name VARCHAR NOT NULL UNIQUE
+);
+
+CREATE TABLE all_tags (
+  tagname VARCHAR NOT NULL UNIQUE
+)
+
+CREATE TABLE tags (
+    file_id INT NOT NULL,
+    name VARCHAR NOT NULL REFERENCES all_tags (tagname),
+    UNIQUE (file_id, name)
+);
+
+// Populate all_tags with the tags you want

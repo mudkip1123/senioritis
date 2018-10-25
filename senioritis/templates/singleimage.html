@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tag image</title>
+    <link href="/static/chosen/chosen.min.css" rel="stylesheet">
+    <style>
+        .the-stuff {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .the-image {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body onkeypress="readyup();">
+<form class="the-stuff" method="POST" action="/admin/tagsubmit/{{ ID }}">
+    <div>Tags:</div>
+    <select multiple name="tags" class="multi">
+        {% for tag_name in tags %}
+            {% if tag_name in selected %}
+                <option value="{{ tag_name }}" selected>{{ tag_name }}</option>
+            {% else %}
+                <option value="{{ tag_name }}">{{ tag_name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <input type="submit" value="Update Tags">
+</form>
+
+<a href="{{ img_url }}">
+    <img class="the-image" src="{{ img_url }}">
+</a>
+
+<form class="the-stuff" method="GET" action="/admin/deleteimage/{{ ID }}">
+    <input type="submit" value="!!Delete Image!!">
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/static/chosen/chosen.jquery.js"></script>
+<script type="text/javascript">
+    $(".multi").chosen({
+        width: "95%"
+    });
+    var pressed = false;
+    function readyup() {
+        if (pressed == false) {
+            $('.multi').trigger('chosen:activate');
+            $('.multi').trigger('chosen:updated');
+            pressed = true;
+        }
+    }
+</script>
+</body>
+</html>

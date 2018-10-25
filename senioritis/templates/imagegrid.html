@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Page With Pictures</title>
+</head>
+<body>
+<style>
+    img { max-width: 800px; }
+</style>
+{% for image_url in ress %}
+    {% set actual_url = "https://s3.amazonaws.com/kyle-picture-bucket/Pictures/" ~ image_url|replace(" ","+") %}
+    <a href='{{actual_url}}'><img src='{{ actual_url }}'></a>
+{% endfor %}
+</body>
+</html>

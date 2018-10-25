@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<form method="POST" action="/upload" enctype="multipart/form-data">
+    {#    Letters: <input type="text" name="Name">#}
+    <input type="file" name="file">
+    <input type="submit" value="Upload" />
+</form>
+<form method="POST" action="/textbox">
+    <input type="text" name="txt">
+    <input type="submit" value="entry"/>
+</form>
+<form method="POST" action="/checkbox">
+    <input type="checkbox" name="include" value="pony">pony<br>
+    <input type="checkbox" name="include" value="wallpaper">wallpaper<br>
+    <input type="checkbox" name="include" value="gif">gif<br>
+    <input type="checkbox" name="include" value="anime">anime<br>
+    <input type="checkbox" name="include" value="comic">comic<br>
+    <input type="checkbox" name="include" value="gaming">gaming<br>
+    <input type="checkbox" name="include" value="twitter">twitter<br>
+    <input type="checkbox" name="include" value="reddit">reddit<br>
+    <input type="checkbox" name="include" value="other">other<br>
+    <input type="checkbox" name="include" value="fav">fav<br>
+    <input type="submit" value="checkboxes">
+</form>
+</body>
+</html>

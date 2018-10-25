@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .multi-container {
+            max-width: 350px;
+            margin: 0 auto;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tag Selection</title>
+
+    <!-- Bootstrap -->
+{#    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">#}
+    <link href="/static/chosen/chosen.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<form class="multi-container" method="POST" action="/multi">
+    <div>Include:</div>
+    <select multiple name="includes" class="multi">
+        {% for tag in tags %}
+            <option value={{ tag }}>{{ tag }}</option>
+        {% endfor %}
+    </select>
+
+    <div>Exclude:</div>
+    <select multiple name="excludes" class="multi">
+        {% for tag in tags %}
+            <option value={{ tag }}>{{ tag }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Lets go!">
+</form>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript">
+    $(".multi").chosen({
+        width: "95%"
+    });
+</script>
+</body>
+</html>
